@@ -108,4 +108,6 @@ return [
 
     'password_timeout' => 10800,
 
+    'default_user_id' => env('APP_DEFAULT_USER_ID'),
+
 ];
