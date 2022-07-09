@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Vyuldashev\NovaPermission\PermissionBooleanGroup;
 
@@ -35,7 +36,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'username', 'email',
+        'id', 'first_name', 'last_name', 'username', 'email', 'status',
     ];
 
     /**
@@ -68,6 +69,12 @@ class User extends Resource
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
+
+            Select::make('Status')->options([
+                'neutral' => 'Neutral',
+                'sad' => 'Sad',
+                'happy' => 'Happy',
+            ]),
 
             Password::make('Password')
                 ->onlyOnForms()
