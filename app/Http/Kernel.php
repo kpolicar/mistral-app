@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\EnforceAuthenticatedAsDefaultUser;
+use App\Http\Middleware\NovaHomeRedirectToUserList;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -39,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             EnforceAuthenticatedAsDefaultUser::class,
+            NovaHomeRedirectToUserList::class,
         ],
 
         'api' => [
