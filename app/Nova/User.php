@@ -27,6 +27,8 @@ class User extends Resource
 
     public static $group = '';
 
+    public static $perPageOptions = [10, 25, 50, 100];
+
     /**
      * The columns that should be searched.
      *
